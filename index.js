@@ -423,7 +423,7 @@ async function run() {
         })
 
 
-
+        
         // banner APIs
         app.get("/banners", verifyToken, verifyAdmin, async (req, res) => {
             const result = await bannerCollection.find().toArray();
@@ -450,8 +450,6 @@ async function run() {
             res.send(result)
         })
 
-
-
         app.patch("/banners/:id", verifyToken, async (req, res) => {
             const id = req.params.id;
             const filter1 = {};
@@ -462,13 +460,11 @@ async function run() {
                 }
             }
 
-
-            
             const activeBanner = {
                 $set: {
                     isActive: true
                 }
-            }
+            }         
             const result1 = await bannerCollection.updateMany(filter1, deactivateBanner)
             const result2 = await bannerCollection.updateOne(filter2, activeBanner)
             res.send({ result1, result2 })
