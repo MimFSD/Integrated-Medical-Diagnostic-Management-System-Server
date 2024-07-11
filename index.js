@@ -387,7 +387,7 @@ async function run() {
             res.send(result)
         })
 
-        
+
 
         // submit test report APIs
         app.get("/report/:email", verifyToken, async (req, res) => {
@@ -407,6 +407,7 @@ async function run() {
             res.send(result)
         })
 
+
         app.patch("/deliver-test/:id", async (req, res) => {
             const id = req.params.id;
             const filter = { _id: new ObjectId(id) };
@@ -415,10 +416,14 @@ async function run() {
                     report: 'delivered'
                 }
             }
+
+
             const result = await reserveCollection.updateOne(filter, updatedDoc);
             res.send(result)
         })
 
+
+        
         // banner APIs
         app.get("/banners", verifyToken, verifyAdmin, async (req, res) => {
             const result = await bannerCollection.find().toArray();
