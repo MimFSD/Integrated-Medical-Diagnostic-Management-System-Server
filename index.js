@@ -354,6 +354,8 @@ async function run() {
         })
 
 
+
+
         app.post('/reserve', async (req, res) => {
             const reservation = req.body;
             const result = await reserveCollection.insertOne(reservation);
@@ -375,12 +377,17 @@ async function run() {
             res.send({ result1, result2 })
         })
 
+
+
+
         app.delete("/reserve/:id", async (req, res) => {
             const id = req.params.id;
             const query = { _id: new ObjectId(id) };
             const result = await reserveCollection.deleteOne(query);
             res.send(result)
         })
+
+        
 
         // submit test report APIs
         app.get("/report/:email", verifyToken, async (req, res) => {
