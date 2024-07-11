@@ -238,6 +238,7 @@ async function run() {
                     short_description: updatedTest.short_description,
                 }
             }
+
             const result = await testsCollection.updateOne(filter, updatedDoc);
             res.send(result)
         })
@@ -284,7 +285,7 @@ async function run() {
             const { price } = req.body;
             const amount = parseInt(price * 100)
 
-            // Create a PaymentIntent with the order amount and currency
+                      // Create a PaymentIntent with the order amount and currency
             const paymentIntent = await stripe.paymentIntents.create({
                 amount: amount,
                 currency: "usd",
