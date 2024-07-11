@@ -225,7 +225,7 @@ async function run() {
 
 
 
-        
+
         app.patch("/tests/:id", verifyToken, verifyAdmin, async (req, res) => {
             const id = req.params.id;
             const filter = { _id: new ObjectId(id) };
@@ -243,6 +243,9 @@ async function run() {
             const result = await testsCollection.updateOne(filter, updatedDoc);
             res.send(result)
         })
+
+
+        
 
         app.patch("/booked-test/:id", async (req, res) => {
             const id = req.params.id;
