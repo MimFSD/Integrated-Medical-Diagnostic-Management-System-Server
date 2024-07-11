@@ -300,7 +300,7 @@ async function run() {
         });
 
 
-        // reservation APIs
+                     // reservation APIs
         app.get("/reserve/:email", verifyToken, async (req, res) => {
             const email = req.params.email;
             const query = {
